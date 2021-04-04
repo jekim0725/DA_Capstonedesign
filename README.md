@@ -13,6 +13,12 @@
 
 ### 1. Data crawling
 #### 1) Sector ETF Price
+KODEX 반도체(091160)
+자동차(091180)
+바이오(244580)
+IT(266370)
+건설(117700) => 임의로 다섯개 지정
+
 
 
 #### 2) Relative News Data
