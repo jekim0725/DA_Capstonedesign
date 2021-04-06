@@ -22,3 +22,7 @@ IT(266370)
 
 
 #### 2) Relative News Data
+매일경제 <br>
+한국경제 <br>
+조선비즈 <br>
+
