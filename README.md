@@ -26,3 +26,19 @@ IT(266370)
 한국경제 <br>
 조선비즈 <br>
 
+
+/python
+etf = pd.read_csv('117700.csv', encoding='cp949')#, decode='utf-8')
+etf.drop(etf.columns[[0]], axis =1, inplace=True)
+etf.set_index('날짜', inplace=True)
+
+updown = []
+for i in range(1,len(etf)): 
+    if (etf['종가'].iloc[i-1] > etf['종가'].iloc[i]):
+        updown.append(1)
+    else:
+        updown.append(0)
+
+updown.append(np.nan)
+
+etf['등락'] = updown
