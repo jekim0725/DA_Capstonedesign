@@ -50,29 +50,18 @@ IT(266370)
 #### 2) 머신러닝
 익일 주가 변동항목 추가(UP. 0. down) 
 속성값들로 클래스 레이블 예측.
-속성값: 뉴스기사의 빈도수, 긍정지수 => 익일 주가 변동 항목은 클래스 레이블
+속성값: 뉴스기사의 빈도수, 긍정지수 
+클래스 레이블: 익일 주가 변동 항목
+만약 주가 등락 데이터가 없는 주말일 경우 그 주말 input data를 금요일 데이터로 편입시켜줌
+
 
 사용분류기법: 서포트 벡터 머신(SVM), 인공신경망
 SVM: 4개의 입력노드, 3개의 출력노드 (Hidden layer는 시행착오)    
 
-만약 주가 등락 데이터가 없는 주말일 경우 그 주말 input data를 금요일 데이터로 편입시켜줌
+SVM: 10 fold cross validation
+1월~9월: training & validation (10-fold cross validation)
+10월~12월: test 
 
-10 fold cross validation
 
 
 
-/python
-etf = pd.read_csv('117700.csv', encoding='cp949')#, decode='utf-8')
-etf.drop(etf.columns[[0]], axis =1, inplace=True)
-etf.set_index('날짜', inplace=True)
-
-updown = []
-for i in range(1,len(etf)): 
-    if (etf['종가'].iloc[i-1] > etf['종가'].iloc[i]):
-        updown.append(1)
-    else:
-        updown.append(0)
-
-updown.append(np.nan)
-
-etf['등락'] = updown
